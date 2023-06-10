@@ -15,49 +15,28 @@ try
     Console.Write("Введите третье число: ");
     int numThree = Convert.ToInt32(Console.ReadLine());
 
-    if (numOne > numTwo)
+    if (numOne == numTwo && numTwo == numThree)
     {
-        if (numOne > numThree)
-        {
-            Console.Write($"Первое число {numOne} максимальное из трёх.");
-
-        }
-        else if (numOne == numThree)
-        {
-
-            Console.Write($"Первое число {numOne} и третье число {numThree} равны и больше числа {numTwo}");
-        }
-
-        else
-        {
-            Console.Write($"Третье число {numThree} максимальное из трёх.");
-        }
+        Console.Write("Все числа равны!");
     }
-    else if (numOne == numTwo)
+    else if (numOne > numTwo && numOne > numThree)
     {
-        if (numOne > numThree)
-        {
-            Console.Write($"Превое число {numOne} и втореое число {numTwo} равны и больше числа {numThree}");
-        }
-        else
-        {
-            Console.Write("Все числа равны.");
-        }
+        Console.Write($"Первое число {numOne} - максимальное.");
     }
     else if (numTwo > numThree)
     {
-        Console.Write($"Второе число {numTwo} максимальное из трёх.");
+        Console.Write($"Второе число {numTwo} - максимальное.");
     }
-    else if (numTwo == numThree)
+    else if (numThree > numOne)
     {
-        Console.Write($"Второе число {numTwo} и третье число {numThree} равны и больше числа {numOne}");
+        Console.Write($"Третье число {numThree} - максимальное.");
     }
     else
     {
-        Console.Write($"Третье число {numThree} максимальное из трёх.");
+        Console.Write("Нет единственного максимального числа, так как два наибольших числа равны.");
     }
 }
-catch
+catch (FormatException ex)
 {
-    Console.Write("Введены не корректные символы.");
+    Console.Write($"Введены не корректные символы.\n {ex.StackTrace}");
 }
