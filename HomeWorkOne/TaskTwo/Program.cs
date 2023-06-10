@@ -23,17 +23,18 @@ try
     {
         Console.Write($"Первое число {numOne} - максимальное.");
     }
-    else if (numTwo > numThree)
+    else if (numTwo > numThree && numTwo > numOne)
     {
         Console.Write($"Второе число {numTwo} - максимальное.");
     }
-    else if (numThree > numOne)
+    else if (numThree > numOne && numThree > numTwo)
     {
         Console.Write($"Третье число {numThree} - максимальное.");
     }
     else
     {
-        Console.Write("Нет единственного максимального числа, так как два наибольших числа равны.");
+        string equalNumber = numOne == numTwo ? "Первое и Второе" : numTwo == numThree ? "Второе и Третье" : "Первое и Третье";
+        Console.Write($"Нет единственного максимального числа, так как {equalNumber} число равны.");
     }
 }
 catch (FormatException ex)
