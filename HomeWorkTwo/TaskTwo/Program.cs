@@ -34,6 +34,30 @@ void GetMeThreeNumber(int number, bool trueNumber)
         Console.WriteLine("Введены не корректные символы.");
     }
 }
-ImputAndExamMumber();
 
-//Попробовать через List, массив и строки.
+//Вариант 2/
+void GetThreNumberVers2()
+{
+    Console.Write("Введите число: ");
+    string number = Console.ReadLine();
+    try
+    {
+        int num = Int32.Parse(number);
+        if (number.Length > 2)
+        {
+            Console.WriteLine(number[2]);
+        }
+        else
+        {
+            Console.WriteLine("Число меньше трёх.");
+        }
+    }
+    catch
+    {
+        Console.WriteLine("Введено не число.");
+    }
+}
+
+//Здесь выховы методов.
+ImputAndExamMumber();
+GetThreNumberVers2();

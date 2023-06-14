@@ -26,9 +26,9 @@ void GetTwoNumber(int numberXXX, bool trueNumber)
         Console.WriteLine($"Введено не корректное число.\n");
     }
 }
-ReqvestAndExemUserNum();
 
 //Вариант два.
+
 int ExemAndGetTwoNumber()
 {
     Console.Write("Введите трёхзначное число: ");
@@ -49,5 +49,7 @@ int GetTwoUserNumber(int numberXXX, bool trueNumber)
         return numberXXX;
     }
 }
+//Здесь вызовы методов.
+ReqvestAndExemUserNum();
 int resalt = ExemAndGetTwoNumber();
 Console.Write(resalt);
