@@ -5,4 +5,4 @@
     7 -> да
     1 -> нет
 */
-Console.WriteLine("Hello, World!");
+Console.WriteLine("");
