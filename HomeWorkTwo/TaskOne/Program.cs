@@ -50,6 +50,8 @@ int GetTwoUserNumber(int numberXXX, bool trueNumber)
     }
 }
 //Здесь вызовы методов.
+//1-й
 ReqvestAndExemUserNum();
+//2-й
 int resalt = ExemAndGetTwoNumber();
 Console.Write(resalt);

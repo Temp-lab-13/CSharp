@@ -5,8 +5,7 @@
     78 -> третьей цифры нет
     32679 -> 6
 */
-//Не вижу смысла делать два варианта как в прошлом Task. Разницы, по сути не будет. 
-//Так же не вижу смысла всё сваливать в один метод.
+//Не вижу смысла всё сваливать в один метод. Это я пробовал в прошлом Task.
 void ImputAndExamMumber()
 {
     Console.Write("Введите число: ");
@@ -35,7 +34,8 @@ void GetMeThreeNumber(int number, bool trueNumber)
     }
 }
 
-//Вариант 2/
+//Вариант 2
+//Строка ведь тоже, по-сути, массив. Со своей длинной и индексами. 
 void GetThreNumberVers2()
 {
     Console.Write("Введите число: ");
@@ -58,6 +58,6 @@ void GetThreNumberVers2()
     }
 }
 
-//Здесь выховы методов.
-ImputAndExamMumber();
-GetThreNumberVers2();
+//Здесь вызовы обоих методов.
+ImputAndExamMumber(); //1-й
+GetThreNumberVers2(); //2-й
