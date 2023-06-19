@@ -6,3 +6,20 @@
     3 -> 1, 8, 27
     5 -> 1, 8, 27, 64, 125
 */
+int InputUserNumber()
+{
+    Console.Write("Введите число: ");
+    int imputNumb = Convert.ToInt32(Console.ReadLine());
+    return imputNumb;
+}
+void PrintTableCube(int imputNumb)
+{
+    int number = 0;
+    Console.Write($"Таблица кубов:\n{imputNumb} -> ");
+    for (int i = 1; i <= imputNumb; i++)
+    {
+        Console.Write($"{number = i * i * i}, ");
+    }
+}
+int userNumber = InputUserNumber();
+PrintTableCube(userNumber);
