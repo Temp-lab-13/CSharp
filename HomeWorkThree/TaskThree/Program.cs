@@ -14,11 +14,12 @@ int InputUserNumber()
 }
 void PrintTableCube(int imputNumb)
 {
-    int number = 0;
+    double number = 0;
     Console.Write($"Таблица кубов:\n{imputNumb} -> ");
     for (int i = 1; i <= imputNumb; i++)
     {
-        Console.Write($"{number = i * i * i}, ");
+        //Console.Write($"{number = i * i * i}, "); //Вариант первый, в лоб.
+        Console.Write($"{number = Math.Pow(i, 3)}, ");
     }
 }
 int userNumber = InputUserNumber();
