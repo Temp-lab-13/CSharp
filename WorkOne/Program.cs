@@ -1,8 +1,18 @@
-﻿// See https://aka.ms/new-console-template for more information
+﻿
 
 int[] array = { 1, 2, 3 };
-Console.Write(string.Join(" ", array));//Быстрый способ распечатать массив.
+//Console.Write(string.Join(" ", array)); //Быстрый способ распечатать массив.
 int num = 1246;
 int length = (int)Math.Log10(num) + 1; //Быстрый способ получить длину числа. Через логорифм.
-Console.WriteLine();
-Console.Write(length);
+
+Random randomNumb = new Random(); //Позволяет создать рандомное число.
+int ru = randomNumb.Next(1, 100);
+
+Random randomDoub = new Random(); //Выраиант с генерацией вещественных чисел.
+double num2 = Math.Round(randomDoub.NextDouble() * 100, 3);
+//Где "3", это до какого знака после запятой нужно округлить с помощью Math.
+//А "100", это до какого целого-положительного числа генерировать.
+
+//Console.WriteLine($"{b:f2}"); // :f Способ ограничить колличество знаков после запятой. Где 2 - это колличество знаков. $ - обязательно. 
+
+//double num3 = Math.Truncate(num2); // Возвращает только целые числа. Т.е. отбрасывает все значения после запятой.
