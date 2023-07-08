@@ -10,7 +10,7 @@
 // 8 4 4 2
 
 //Метод печати двумерного массива. 
-void Print(int[,] array)
+void PrintArray(int[,] array)
 {
     for (int i = 0; i < array.GetLength(0); i++)
     {
@@ -31,7 +31,6 @@ int[,] SortNumbersArray(int[,] arrayInteger, int stringArray)
     int index = 0;
     //нам нужна длина только обрабатываемой строки.
     int length = arrayInteger.GetLength(1);
-
     //Сортировка выбором для одномерного массива, 
     //модифицирована добавлением индекста строки,
     //котрую мы берём из принимающих методом аргументов.
@@ -67,6 +66,19 @@ int[,] SortNumbersArray(int[,] arrayInteger, int stringArray)
 
 }
 
+int[,] CreateIntegerArray(int line, int column, int minIntegerNumber, int maxIntegerNumber)
+{
+    int[,] array = new int[line, column];
+    for (int i = 0; i < line; i++)
+    {
+        for (int j = 0; j < column; j++)
+        {
+            array[i, j] = new Random().Next(minIntegerNumber, maxIntegerNumber);
+        }
+    }
+    return array;
+}
+
 //Задаём двумерный массив, как в примере для наглядности. 
 int[,] arrayNumbers = new int[,] {
      {1, 4, 7, 2},
@@ -75,7 +87,17 @@ int[,] arrayNumbers = new int[,] {
      {1, 0, 9, 3},
      {0, 0, 1, 1}
  };
+int LineZerro = 0;
+int[,] testArray = CreateIntegerArray(8, 8, 0, 50);
 
+arrayNumbers = SortNumbersArray(arrayNumbers, LineZerro);
+Console.WriteLine("Отсортированный массив из примера:");
+PrintArray(arrayNumbers);
 
-arrayNumbers = SortNumbersArray(arrayNumbers, 0);
-Print(arrayNumbers);
+Console.WriteLine("Не отсортированный рандомный массив:");
+PrintArray(testArray);
+Console.WriteLine("Отсортированный рандомный массив:");
+testArray = SortNumbersArray(testArray, LineZerro);
+PrintArray(testArray);
+
+//ToDO: попробовать другие сортировки.

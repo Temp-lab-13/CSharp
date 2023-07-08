@@ -20,19 +20,41 @@ void PrintArray(int[,] array)
     }
 }
 
-//метод переумнжающий две матрицы.
-//и возращающий результат в другой матрице.
+//метод создания гибкой матрицы заполняемой случайными целыми числами, в указаннои диапозоне.
+int[,] CreateMatrix(int line, int column, int minIntegerNumber, int maxIntegerNumber)
+{
+    int[,] matrix = new int[line, column];
+    for (int i = 0; i < line; i++)
+    {
+        for (int j = 0; j < column; j++)
+        {
+            matrix[i, j] = new Random().Next(minIntegerNumber, maxIntegerNumber);
+        }
+    }
+    return matrix;
+}
+
+//Vетод переумнжающий две передаваемые в него матрицы.
+//и возращающий результат в другую матрицу.
 int[,] WorkMatrix(int[,] arrayOne, int[,] arrayTwo)
 {
-    //получаем размер матриц..
-    int row = arrayOne.GetLength(0);
-    int colum = arrayOne.GetLength(1);
+    //получаем размер матриц.
+    int line = arrayOne.GetLength(0);
+    int column = arrayOne.GetLength(1);
+
     //создаём матрицу, в которой храним результаты.
-    //размер берётся по первой входящей матрице.
-    int[,] resultWorkMatrix = new int[row, colum];
+    int[,] resultWorkMatrix = new int[line, column];
+
+    //Проверочка на то что обе матрицы одинакого размера.
+    //Иначе етод может, и скорее всего не будет работать.
+    if (line != arrayTwo.GetLength(0) || column != arrayTwo.GetLength(1))
+    {
+        Console.Write("Матрицы не равны.");
+        return resultWorkMatrix;
+    }
 
     //Верхний цикл идёт по длине первой матрицы.
-    for (int i = 0; i < row; i++)
+    for (int i = 0; i < line; i++)
     {
         //нижный цикл без условия, оно проверяется отдельно. 
         //так как нам нужно работать сразу с тремя массивами,
@@ -46,18 +68,16 @@ int[,] WorkMatrix(int[,] arrayOne, int[,] arrayTwo)
             //а вторая переменна r, увеличивалась.
             //это позволяет перейти к записи следующего элемента в новый массив, 
             //и сдвинуть колонку на которую умножаем, во второй матрице. 
-            if (j == colum)
+            if (j == column)
             {
-                j = 0;
-                r++;
-                if (r == colum) break;
+                j = 0; r++; if (r == column) break;
+                //Когда Второе число первой строки на всё умноажается,
+                //выходим из цикла.
             }
             //переумножение элементов.
-
             resultWorkMatrix[i, r] += arrayOne[i, j] * arrayTwo[j, r];
         }
     }
-    //возращам получившуюся матрицу.
     return resultWorkMatrix;
 }
 
@@ -71,11 +91,23 @@ int[,] matrixTwo = new int[,]{
     {3, 3}
 };
 
-int[,] test = WorkMatrix(matrixOne, matrixTwo);
-PrintArray(test);
+int[,] testMatrixOne = CreateMatrix(2, 2, 10, 200);
+int[,] testMatrixTwo = CreateMatrix(2, 2, 10, 200);
 
-//С пол часа вообще не мог сообразить, что от меня требуется. 
+Console.WriteLine("Первая матрица:");
+PrintArray(testMatrixOne);
+
+Console.WriteLine("Вторая матрица:");
+PrintArray(testMatrixTwo);
+
+int[,] testTwoMatrix = WorkMatrix(testMatrixOne, testMatrixTwo);
+Console.WriteLine("Произведение матриц:");
+PrintArray(testTwoMatrix);
+
+Console.WriteLine("Произведение матриц из примера:");
+int[,] testMatrix = WorkMatrix(matrixOne, matrixTwo);
+PrintArray(testMatrix);
+
+//Долго вообще не мог сообразить, что от меня требуется. 
 //Что на что должо множиться, что бы получились требуемые цифры?
 //С калькулятором просидель долше, чем над кодом.
-
-//TODO - попробовать сделать по другому.

@@ -8,33 +8,33 @@
 // 5 2 6 7
 //     Программа считает сумму элементов в каждой строке и выдаёт номер строки с наименьшей суммой элементов: 1 строка
 
-//Первый этап.
+//Первый этап. находим Сумму кажой строки.
 int MinimalNumberElementArray(int[,] array)
 {
-    int row = array.GetLength(0);
-    int colum = array.GetLength(1);
-    //массив в который будет сохраняться сумма каждой строки.
-    //Длинна соответсвует колличеству строк.
-    int[] SumRowArray = new int[row];
-    //прбегаемся по всему массиву.
-    for (int i = 0; i < row; i++)
+    int line = array.GetLength(0);
+    int column = array.GetLength(1);
+    //Массив в который будет сохраняться сумма каждой строки.
+    //Длинна соответсвует колличеству строк обрабатываемого массива.
+    int[] SumRowArray = new int[line];
+    for (int i = 0; i < line; i++)
     {
         int tempSumElement = 0;
-        for (int j = 0; j < colum; j++)
+        for (int j = 0; j < column; j++)
         {
-            //и складываем все числа в каждой строке по отдельности..
+            //Складываем все числа, в каждой строке, по отдельности.
             tempSumElement = tempSumElement + array[i, j];
         }
         //Вывод для контроля результата подстчёта.
-        Console.WriteLine(tempSumElement);
+        Console.WriteLine($"Строка №{i + 1}: {tempSumElement}");
         //Сумму каждой строки записываем в новый массив.
         SumRowArray[i] = tempSumElement;
     }
-    //Возвращаем результат работы второго этапа.
-    return MinElement(SumRowArray, row);
+    //Вызываем метод поиска минимального элемента и,
+    //сразу возвращаем результат.
+    return MinElement(SumRowArray, line);
 }
 
-//Второй этап.
+//Второй этап. Поиск минмальнго элемента.
 int MinElement(int[] array, int row)
 {
     // простейший алгоритм поиска минимального числа
@@ -50,13 +50,13 @@ int MinElement(int[] array, int row)
         }
     }
     //возвращаем найденный индекс минимального числа,
-    //соответвующего индексу строки в которой мы его нашли.
-    //+ 1 позволяет при выводе вести отсчёт строк не с "0",
-    //как того требует условие задачи.
+    //он соответвует индексу строки в которой мы его нашли.
+    //+ 1 позволяет при выводе вести отсчёт строк не с "0", 
+    //а с единицы, как того требует условие задачи.
     return index + 1;
 }
 
-//Распечатка массива. Что бы убедиться, что он прямоугольный.
+//Распечатка массива. Что бы убедиться, что он максимально прямоугольный.
 void PrintArray(int[,] array)
 {
     for (int i = 0; i < array.GetLength(0); i++)
@@ -83,7 +83,6 @@ int[,] rectangleIntegerArray = new int[,]{
 // {5, 9, 2, 3},
 // {8, 4, 2, 4},
 // {5, 2, 6, 7}};
-
 PrintArray(rectangleIntegerArray);
 Console.Write($"Минимальная сумма в строке № {MinimalNumberElementArray(rectangleIntegerArray)};");
 
