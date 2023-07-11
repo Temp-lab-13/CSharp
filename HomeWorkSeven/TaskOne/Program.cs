@@ -18,7 +18,7 @@ int SizeArray(string nameSize)
     int size = 0;
     //В переменную передаётся при вызове строка с описанием что нао вводить.
     Console.Write(nameSize);
-    while (int.TryParse(Console.ReadLine(), out size) == false || size < 1 )
+    while (int.TryParse(Console.ReadLine(), out size) == false || size < 1)
     {
         Console.Write("Введена не корректная длина массива. Попробуйте ещё раз: ");
     }
@@ -41,8 +41,8 @@ double[,] CreatArrayDouble(int oneSize, int twoSize)
     {
         for (int j = 0; j < twoSize; j++)
         {
-           doubles[i, j] = Math.Round(new Random().NextDouble() * maxNumber - minNumber, 
-           comma, MidpointRounding.ToZero);
+            doubles[i, j] = Math.Round(new Random().NextDouble() * maxNumber - minNumber,
+            comma, MidpointRounding.ToZero);
         }
     }
     //возвращаем двумерный массив.

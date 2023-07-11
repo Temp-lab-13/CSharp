@@ -4,3 +4,30 @@
 // ====== Например:
 //     N = 5 -> "5, 4, 3, 2, 1"
 //     N = 8 -> "8, 7, 6, 5, 4, 3, 2, 1"
+
+//Метод печати всех натуральных чисел т N до 1.
+void PrintSeriesNaturalNumber(int number)
+{
+    //переменная ограничитель.
+    //задаёт До какго числа будет идит вывод.
+    int rowBorder = 1;
+    //Проверяем что переданный аргумент больше ограничителя.
+    if (number > rowBorder)
+    {
+        //Выводим первое число и запускаем Рекурсию,
+        //до прекращения выполнения условия.
+        Console.Write($"{number}, ");
+        PrintSeriesNaturalNumber(number - 1);
+    }
+    //когда остаётся последнее число, выводим его,
+    //и завершаем строку ";", что бы в конце не было запятой.
+    else if (number == rowBorder)
+    {
+        Console.Write($"{number};");
+    }
+}
+int testNumber = 27;
+
+//чисто для оформления вывода.
+Console.Write($"N = {testNumber} --> ");
+PrintSeriesNaturalNumber(testNumber);
